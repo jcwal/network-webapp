@@ -1,0 +1,1 @@
+<@layout.admin title="网络资源管理系统" scripts="admin/jcwal-network-webapp/main.js" />
