@@ -316,4 +316,16 @@ public class NetworkResource extends AbstractAuditable<Long> {
 		this.tline = tline;
 	}
 
+	////////////////////////////////JSON ////////////////////////////////
+	public int getExistedLength() {
+		return rents == null ? 0 : rents.size();
+	}
+
+	@JsonIgnore
+	public RentResource getLastRent() {
+		if (rents != null && !rents.isEmpty()) {
+			return rents.get(rents.size() - 1);
+		}
+		return null;
+	}
 }

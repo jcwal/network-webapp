@@ -225,7 +225,7 @@ public class NetworkSchemaRegistory {
 		column.setName("tusable");
 		column.setType(DataType.Boolean);
 		column.setVisible(true);
-		column.setWidth(100);
+		column.setWidth(50);
 		schema.addColumn(column);
 
 		param = new FinderParam(column, "network_usable_list");
@@ -267,6 +267,312 @@ public class NetworkSchemaRegistory {
 		param.setFieldControl(FieldControl.Text);
 		schema.addParam(param);
 
+		column = new FinderColumn();
+		column.setLabel("设备名称");
+		column.setColumn("tname");
+		column.setName("tname");
+		column.setType(DataType.String);
+		column.setVisible(true);
+		column.setWidth(100);
+		schema.addColumn(column);
+
+		param = new FinderParam(column, null);
+		param.setEnableSearch(true);
+		param.setEnableFilter(true);
+		param.setDefaultCriteriaType(CriteriaType.Contains);
+		param.setFieldControl(FieldControl.Text);
+		schema.addParam(param);
+
+		column = new FinderColumn();
+		column.setLabel("应用系统");
+		column.setColumn("tapplication");
+		column.setName("tapplication");
+		column.setType(DataType.String);
+		column.setVisible(true);
+		column.setWidth(100);
+		schema.addColumn(column);
+
+		param = new FinderParam(column, null);
+		param.setEnableSearch(true);
+		param.setEnableFilter(true);
+		param.setDefaultCriteriaType(CriteriaType.Contains);
+		param.setFieldControl(FieldControl.Text);
+		schema.addParam(param);
+
+		column = new FinderColumn();
+		column.setLabel("操作系统");
+		column.setColumn("toperation");
+		column.setName("toperation");
+		column.setType(DataType.String);
+		column.setVisible(true);
+		column.setWidth(100);
+		schema.addColumn(column);
+
+		param = new FinderParam(column, null);
+		param.setEnableSearch(true);
+		param.setEnableFilter(true);
+		param.setDefaultCriteriaType(CriteriaType.Contains);
+		param.setFieldControl(FieldControl.Text);
+		schema.addParam(param);
+
+		column = new FinderColumn();
+		column.setLabel("网络区域");
+		column.setColumn("tarea");
+		column.setName("tarea");
+		column.setType(DataType.String);
+		column.setVisible(true);
+		column.setWidth(100);
+		schema.addColumn(column);
+
+		param = new FinderParam(column, null);
+		param.setEnableSearch(true);
+		param.setEnableFilter(true);
+		param.setDefaultCriteriaType(CriteriaType.Contains);
+		param.setFieldControl(FieldControl.Text);
+		schema.addParam(param);
+
+		column = new FinderColumn();
+		column.setLabel("所在机房");
+		column.setColumn("troom");
+		column.setName("troom");
+		column.setType(DataType.String);
+		column.setVisible(true);
+		column.setWidth(100);
+		schema.addColumn(column);
+
+		param = new FinderParam(column, null);
+		param.setEnableSearch(true);
+		param.setEnableFilter(true);
+		param.setDefaultCriteriaType(CriteriaType.Contains);
+		param.setFieldControl(FieldControl.Text);
+		schema.addParam(param);
+
+		column = new FinderColumn();
+		column.setLabel("机架位置");
+		column.setColumn("tposition");
+		column.setName("tposition");
+		column.setType(DataType.String);
+		column.setVisible(true);
+		column.setWidth(100);
+		schema.addColumn(column);
+
+		param = new FinderParam(column, null);
+		param.setEnableSearch(true);
+		param.setEnableFilter(true);
+		param.setDefaultCriteriaType(CriteriaType.Contains);
+		param.setFieldControl(FieldControl.Text);
+		schema.addParam(param);
+
+		column = new FinderColumn();
+		column.setLabel("交换机IP");
+		column.setColumn("tswitchIp");
+		column.setName("tswitchIp");
+		column.setType(DataType.String);
+		column.setVisible(true);
+		column.setWidth(100);
+		schema.addColumn(column);
+
+		param = new FinderParam(column, null);
+		param.setEnableSearch(true);
+		param.setEnableFilter(true);
+		param.setDefaultCriteriaType(CriteriaType.Contains);
+		param.setFieldControl(FieldControl.Text);
+		schema.addParam(param);
+
+		column = new FinderColumn();
+		column.setLabel("交换机端口");
+		column.setColumn("tswitchPort");
+		column.setName("tswitchPort");
+		column.setType(DataType.String);
+		column.setVisible(true);
+		column.setWidth(100);
+		schema.addColumn(column);
+
+		param = new FinderParam(column, null);
+		param.setEnableSearch(true);
+		param.setEnableFilter(true);
+		param.setDefaultCriteriaType(CriteriaType.Contains);
+		param.setFieldControl(FieldControl.Text);
+		schema.addParam(param);
+
+		column = new FinderColumn();
+		column.setLabel("配线架号");
+		column.setColumn("tdist");
+		column.setName("tdist");
+		column.setType(DataType.String);
+		column.setVisible(true);
+		column.setWidth(100);
+		schema.addColumn(column);
+
+		param = new FinderParam(column, null);
+		param.setEnableSearch(true);
+		param.setEnableFilter(true);
+		param.setDefaultCriteriaType(CriteriaType.Contains);
+		param.setFieldControl(FieldControl.Text);
+		schema.addParam(param);
+
+		//////////////////////////////////外网///////////////////////////////////
+
+		column = new FinderColumn();
+		column.setLabel("域名");
+		column.setColumn("tdomain");
+		column.setName("tdomain");
+		column.setType(DataType.String);
+		column.setVisible(true);
+		column.setWidth(100);
+		schema.addColumn(column);
+
+		param = new FinderParam(column, null);
+		param.setEnableSearch(true);
+		param.setEnableFilter(true);
+		param.setDefaultCriteriaType(CriteriaType.Contains);
+		param.setFieldControl(FieldControl.Text);
+		schema.addParam(param);
+
+		column = new FinderColumn();
+		column.setLabel("VS IP");
+		column.setColumn("tvsIp");
+		column.setName("tvsIp");
+		column.setType(DataType.String);
+		column.setVisible(true);
+		column.setWidth(100);
+		schema.addColumn(column);
+
+		param = new FinderParam(column, null);
+		param.setEnableSearch(true);
+		param.setEnableFilter(true);
+		param.setDefaultCriteriaType(CriteriaType.Contains);
+		param.setFieldControl(FieldControl.Text);
+		schema.addParam(param);
+
+		column = new FinderColumn();
+		column.setLabel("F5 IP");
+		column.setColumn("tf5Ip");
+		column.setName("tf5Ip");
+		column.setType(DataType.String);
+		column.setVisible(true);
+		column.setWidth(100);
+		schema.addColumn(column);
+
+		param = new FinderParam(column, null);
+		param.setEnableSearch(true);
+		param.setEnableFilter(true);
+		param.setDefaultCriteriaType(CriteriaType.Contains);
+		param.setFieldControl(FieldControl.Text);
+		schema.addParam(param);
+
+		column = new FinderColumn();
+		column.setLabel("VS IP");
+		column.setColumn("tvsIp");
+		column.setName("tvsIp");
+		column.setType(DataType.String);
+		column.setVisible(true);
+		column.setWidth(100);
+		schema.addColumn(column);
+
+		param = new FinderParam(column, null);
+		param.setEnableSearch(true);
+		param.setEnableFilter(true);
+		param.setDefaultCriteriaType(CriteriaType.Contains);
+		param.setFieldControl(FieldControl.Text);
+		schema.addParam(param);
+
+		column = new FinderColumn();
+		column.setLabel("内网发布端口");
+		column.setColumn("tinsidePort");
+		column.setName("tinsidePort");
+		column.setType(DataType.String);
+		column.setVisible(true);
+		column.setWidth(100);
+		schema.addColumn(column);
+
+		param = new FinderParam(column, null);
+		param.setEnableSearch(true);
+		param.setEnableFilter(true);
+		param.setDefaultCriteriaType(CriteriaType.Contains);
+		param.setFieldControl(FieldControl.Text);
+		schema.addParam(param);
+
+		column = new FinderColumn();
+		column.setLabel("公网IP");
+		column.setColumn("toutsideIp");
+		column.setName("toutsideIp");
+		column.setType(DataType.String);
+		column.setVisible(true);
+		column.setWidth(100);
+		schema.addColumn(column);
+
+		param = new FinderParam(column, null);
+		param.setEnableSearch(true);
+		param.setEnableFilter(true);
+		param.setDefaultCriteriaType(CriteriaType.Contains);
+		param.setFieldControl(FieldControl.Text);
+		schema.addParam(param);
+
+		column = new FinderColumn();
+		column.setLabel("公网发布端口");
+		column.setColumn("toutsidePort");
+		column.setName("toutsidePort");
+		column.setType(DataType.String);
+		column.setVisible(true);
+		column.setWidth(100);
+		schema.addColumn(column);
+
+		param = new FinderParam(column, null);
+		param.setEnableSearch(true);
+		param.setEnableFilter(true);
+		param.setDefaultCriteriaType(CriteriaType.Contains);
+		param.setFieldControl(FieldControl.Text);
+		schema.addParam(param);
+
+		column = new FinderColumn();
+		column.setLabel("服务器IP");
+		column.setColumn("tserverIp");
+		column.setName("tserverIp");
+		column.setType(DataType.String);
+		column.setVisible(true);
+		column.setWidth(100);
+		schema.addColumn(column);
+
+		param = new FinderParam(column, null);
+		param.setEnableSearch(true);
+		param.setEnableFilter(true);
+		param.setDefaultCriteriaType(CriteriaType.Contains);
+		param.setFieldControl(FieldControl.Text);
+		schema.addParam(param);
+
+		column = new FinderColumn();
+		column.setLabel("线路名称");
+		column.setColumn("tline");
+		column.setName("tline");
+		column.setType(DataType.String);
+		column.setVisible(true);
+		column.setWidth(100);
+		schema.addColumn(column);
+
+		param = new FinderParam(column, null);
+		param.setEnableSearch(true);
+		param.setEnableFilter(true);
+		param.setDefaultCriteriaType(CriteriaType.Contains);
+		param.setFieldControl(FieldControl.Text);
+		schema.addParam(param);
+
+		column = new FinderColumn();
+		column.setLabel("备注");
+		column.setColumn("comments");
+		column.setName("comments");
+		column.setType(DataType.String);
+		column.setVisible(false);
+		column.setWidth(100);
+		schema.addColumn(column);
+
+		param = new FinderParam(column, null);
+		param.setEnableSearch(true);
+		param.setEnableFilter(true);
+		param.setDefaultCriteriaType(CriteriaType.Contains);
+		param.setFieldControl(FieldControl.Text);
+		schema.addParam(param);
+
 		schema.setEnableFilter(true);
 		schema.setEnableSearch(true);
 
@@ -279,15 +585,23 @@ public class NetworkSchemaRegistory {
 		action = new FinderAction();
 		action.setLabel("新增IP资源");
 		action.setHref("admin/network/networkresource/create");
-		action.setTarget("dialog::{title: '新增IP资源', width:'720',height:'700'}");
+		action.setTarget("dialog::{title: '新增IP资源', width:'720',height:'680'}");
 		schema.addAction(action);
 
 		action = new FinderAction();
 		action.setLabel("编辑IP资源");
 		action.setHref("admin/network/networkresource/edit");
-		action.setTarget("dialog::{title: '编辑IP资源', width:'720',height:'700'}");
+		action.setTarget("dialog::{title: '编辑IP资源', width:'720',height:'680'}");
 		action.setMaxRowSelected(1);
 		action.setMinRowSelected(1);
+		schema.addAction(action);
+
+		action = new FinderAction();
+		action.setLabel("导出IP资源");
+		action.setHref("admin/network/networkresource/export");
+		action.setTarget("blank");
+		action.setMinRowSelected(1);
+		action.setConfirm("您确定要导出EXCEL吗？");
 		schema.addAction(action);
 
 		action = new FinderAction();
@@ -297,12 +611,6 @@ public class NetworkSchemaRegistory {
 		action.setTarget("command");
 		action.setMinRowSelected(1);
 		schema.addAction(action);
-
-		//		FinderDetailView detailView = new FinderDetailView();
-		//		detailView.setCode("networkresourcedetail");
-		//		detailView.setLabel("IP资源使用明细");
-		//		detailView.setHref("admin/network/networkresource/detail");
-		//		schema.addDetailView(detailView);
 
 		FinderTabView tabView = new FinderTabView();
 		tabView.setCode("insideips");

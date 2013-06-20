@@ -23,7 +23,7 @@ public class NetworkResourceServiceImpl implements NetworkResourceService {
 		}
 
 		String prefix = segment + '.';
-		for (int i = 0; i < 0xFF; i++) {
+		for (int i = 1; i <= 0xFF; i++) {
 			NetworkResource resource = new NetworkResource();
 			resource.setIp(prefix + i);
 			resource.setType(type);

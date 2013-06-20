@@ -29,7 +29,7 @@ $(function() {
 
 		comments : '',
 		rents : [],
-		existedLength: 0
+		existedLength : 0
 	});
 	var rentResource = {
 		id : '',
@@ -86,7 +86,6 @@ $(function() {
 		$.getJSON($form.getContextPath()
 				+ '/admin/network/networkresource/get/' + currentId, function(
 				data) {
-			data.returnObject.existedLength = data.returnObject.rents !=null?data.returnObject.rents.length:0;
 			ko.mapping.updateFromJS(viewModel, data.returnObject);
 		});
 	}
