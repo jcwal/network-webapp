@@ -3,12 +3,15 @@
  */
 package org.jcwal.so.network.service.impl;
 
-import java.util.UUID;
+import java.util.HashMap;
+import java.util.Map;
 
-import org.macula.Configuration;
+import org.jcwal.so.network.domain.Doctor;
+import org.jcwal.so.network.repository.DoctorRepository;
 import org.macula.base.security.principal.UserPrincipal;
 import org.macula.base.security.principal.impl.UserPrincipalImpl;
 import org.macula.base.security.service.CustomUserLoginRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
@@ -24,12 +27,18 @@ import org.springframework.stereotype.Component;
 @Component
 public class NetworkLoginRepository implements CustomUserLoginRepository {
 
+	@Autowired
+	private DoctorRepository doctorRepository;
+
 	@Override
 	public UserPrincipal loadUserByUsername(String username) {
-		String sysusers = Configuration.getProperty("SYSUSERS");
-		if (sysusers.contains(username)) {
-			UserPrincipalImpl principal = new UserPrincipalImpl(username);
-			principal.setPassword(UUID.randomUUID().toString());
+		Doctor user = doctorRepository.findByUsername(username);
+		if (user != null) {
+			Map<String, Object> attrs = new HashMap<String, Object>();
+			attrs.put(UserPrincipal.NICKNAME_ATTR, user.getNickname());
+			UserPrincipalImpl principal = new UserPrincipalImpl(user.getUsername());
+			principal.setPassword(user.getPassword());
+			principal.setAttributes(attrs);
 			return principal;
 		}
 		throw new UsernameNotFoundException("AbstractUserDetailsAuthenticationProvider.badCredentials");

@@ -14,18 +14,21 @@
 		<script type="text/javascript" src="${resourceHost!""}/resources${appVersion!""}/admin/knockout.mapping${minVersion!""}.js"></script>
 		<script type="text/javascript" src="${resourceHost!""}/resources${appVersion!""}/admin/macula-ui-${MaculauiVersion}/macula-ui-${MaculauiVersion}${minVersion!""}.js"></script>		
 		<script type="text/javascript" src="${resourceHost!""}/resources${appVersion!""}/admin/macula-ui-${MaculauiVersion}/macula-ui-${MaculauiVersion}${minVersion!""}.js"></script>
-		<script type="text/javascript" src="${base}/views${appVersion!""}/admin/macula-samples-webapp/login${minVersion!""}.js"></script>
-		<title>用户登录</title>	</head>
+		<script type="text/javascript" src="${base}/views${appVersion!""}/admin/jcwal-hcrm-webapp/login${minVersion!""}.js"></script>
+		<title>用户登录</title>
+	</head>
 	<body>
 		<!-- 如果是统一认证后本地出错，则统一登出后跳回统一认证登录界面 -->
+		<#--
 		<#if exception?exists && !(RequestParameters.form)?exists>
 			<script type="text/javascript">
 				alert('${getText(exception.getMessage(), exception.getMessage())}');
 				window.location = '${maculaConfig.getCasServerService()}/logout?service=${maculaConfig.getCasClientService()}/j_spring_security_logout&forward=/admin';
 			</script>
 		</#if>
-		
+		-->
 		<!-- 检测是否需要统一认证 -->
+		<#--
 		<#if !(RequestParameters.form)?exists && !exception?exists>
 			<script type="text/javascript">
 				function checkCasLogin(status) {
@@ -34,13 +37,11 @@
 			</script>	
 			<script type="text/javascript" src="${maculaConfig.getCasServerService()}/v?jsonp=checkCasLogin&appId=${maculaConfig.getAppName()}"></script>
 		</#if>	
-	
+		-->
 	<#if !(RequestParameters.forward)?exists || !RequestParameters.forward?contains("/ajaxforward")>
-		<div id="logo" class="w">
+		<div id="logo">
 			<div>
-				<a href="${maculaConfig.getCasServerService()}">
-					<img src="${resourceHost!""}/resources${appVersion!""}/admin/app-${AppuiVersion}/themes/${getTheme('skin')}/login/images/login-logo.gif" alt="统一认证中心" width="413" height="101" />
-				</a>
+				
 			</div>
 		</div>		
 	<div id="entry" class="w">
@@ -71,7 +72,6 @@
 					<div class="fl">
 						<input id="password" name="j_password" type="password" tabindex="2" class="text" validate="{required:true,messages:{required: '请输入密码！'}}"/>
 						<label id="password_succeed" class="blank invisible"></label>
-						<label><a class="flk13" href="#">忘记密码?</a></label>
 						<span class="clr"></span>
 						<label id="password_error"></label>
 						<label id="caps-info" class="caps-info"></label>
@@ -107,7 +107,8 @@
 					<#if exception?exists >
 						<label class="errorTip">${getText(exception.getMessage(), exception.getMessage())}</label>
 			    	</#if>					
-				</div>	
+				</div>
+				<#--	
 				<div class="item extra">
 					<label class="ftx24">
 					<#if (RequestParameters.form)?exists>
@@ -116,7 +117,8 @@
 						<span class="btns localapp"><s></s><a onclick="window.location='${maculaConfig.getCasServerService()}/login?service=${maculaConfig.getCasClientService()}/j_spring_cas_security_check<#if (RequestParameters.forward)?exists>&forward=${RequestParameters.forward}</#if>&form=${maculaConfig.getCasClientService()}/admin/login';">统一认证中心登录</a></span>
 					</label>
 					</#if>
-				</div>		
+				</div>
+				-->
 			</div>	
 			<#if (bindingResult.fieldErrors)?has_content>
 			<script>
@@ -135,8 +137,7 @@
 					<ul>
 						<li>请输入您的认证明用户名及密码进行登录；</li>
 						<li>如忘记密码,请按提示操作；</li>
-						<li>如有疑问进入帮助中心或联系客服；</li>
-						<li>您还可以尝试到统一认证中心登录</li>
+						<li>如有疑问进入帮助中心或联系客服；</li>						
 					</ul>
 				</div>
 			</div>
@@ -150,11 +151,7 @@
 			<div class="flinks">
 				<a href="#">关于我们</a>|<a href="#">联系我们</a>|<a href="#">人才招聘</a>|<a href="#">意见反馈</a>|<a href="#">帮助中心</a>
 			</div>
-			<br/>
-			<div id="copyright">
-				客服热线： <img src="${resourceHost!""}/resources${appVersion!""}/admin/app-${AppuiVersion}/themes/${getTheme('skin')}/login/images/icon01.gif" width="12" height="12" /> 400-800-1188<br />
-				无限极（中国）有限公司 [粤ICP备05041458]
-			</div>
+			<br/>			
 		</div>
 	</#if>
 	</div>			

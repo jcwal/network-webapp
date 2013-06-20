@@ -155,7 +155,7 @@
 					<tr>
 						<td colspan="4">
 							<button type="button" class="btn btn-has-icon" data-bind="click: onAddRentResource">
-				  				<span><span><i class="btn-icon"><@macula.themeImage src="bundle/btn_add.gif"/></i>新增借用</span></span>
+				  				<span><span><i class="btn-icon"><@macula.themeImage src="bundle/btn_add.gif"/></i>申请</span></span>
 				  			</button>
 						</td>
 					</tr>
@@ -181,21 +181,21 @@
 				<span>${index+1}</span>
 			</td>
 			<td>
-				<input type="text" id="begin_${index}" name="network.rents[${index}].beginDate" data-bind="value: detail.beginDate, type: 'date' " autocomplete="off" class="Wdate" onFocus="WdatePicker({onpicking:function(dp){ $('#page-edit-networkresource').data('viewModel').rents()[${index}].beginDate(dp.cal.getNewDateStr()); }, dateFmt:'${datePattern}' {{if index > 0 }}, minDate:'#F{$dp.$D(\'end_${index-1}\',{m:1})}' {{/if}}, maxDate:'#F{$dp.$D(\'end_${index}\',{m:-1})}'})" style="width:100%" />				
+				<input type="text" id="begin_${index}" name="network.rents[${index}].beginDate" data-bind="disable:detail.id()!=null && index<existedLength()-1,value: detail.beginDate, type: 'date' " autocomplete="off" class="Wdate" onFocus="WdatePicker({onpicking:function(dp){ $('#page-edit-networkresource').data('viewModel').rents()[${index}].beginDate(dp.cal.getNewDateStr()); }, dateFmt:'${datePattern}' {{if index > 0 }}, minDate:'#F{$dp.$D(\'end_${index-1}\',{m:1})}' {{/if}}, maxDate:'#F{$dp.$D(\'end_${index}\',{m:-1})}'})" style="width:100%" />				
 			</td>
 			<td>
-				<input type="text" id="end_${index}"   name="network.rents[${index}].endDate"   data-bind="value: detail.endDate,   type: 'date' " autocomplete="off" class="Wdate" onFocus="WdatePicker({onpicking:function(dp){ $('#page-edit-networkresource').data('viewModel').rents()[${index}].endDate(dp.cal.getNewDateStr()); }, dateFmt:'${datePattern}',minDate:'#F{$dp.$D(\'begin_${index}\',{m:1})}' {{if (index+1) < rents().length }}, maxDate:'#F{$dp.$D(\'begin_${index+1}\',{m:-1})}' {{/if}} })" style="width:100%" />				
+				<input type="text" id="end_${index}"   name="network.rents[${index}].endDate" data-bind="disable:detail.id()!=null && index<existedLength()-1,value: detail.endDate,   type: 'date' " autocomplete="off" class="Wdate" onFocus="WdatePicker({onpicking:function(dp){ $('#page-edit-networkresource').data('viewModel').rents()[${index}].endDate(dp.cal.getNewDateStr()); }, dateFmt:'${datePattern}',minDate:'#F{$dp.$D(\'begin_${index}\',{m:1})}' {{if (index+1) < rents().length }}, maxDate:'#F{$dp.$D(\'begin_${index+1}\',{m:-1})}' {{/if}} })" style="width:100%" />				
 			</td>
 			<td>
-				<input type="text" name="network.rents[${index}].applyman" data-bind="value: detail.applyman" validate="required:true,rangelength:[1,255]" style="width:100%" />
+				<input type="text" name="network.rents[${index}].applyman" data-bind="disable:detail.id()!=null && index<existedLength()-1,value: detail.applyman" validate="required:true,rangelength:[1,255]" style="width:100%" />
 			</td>
 			<td>
-				<input type="text" name="network.rents[${index}].chargeman" data-bind="value: detail.chargeman" validate="required:true,rangelength:[1,255]" style="width:100%" />
+				<input type="text" name="network.rents[${index}].chargeman" data-bind="disable:detail.id()!=null && index<existedLength()-1,value: detail.chargeman" validate="required:true,rangelength:[1,255]" style="width:100%" />
 			</td>
 			<td>
-				<input type="text" name="network.rents[${index}].comments" data-bind="value: detail.comments" validate="rangelength:[0,255]" style="width:100%" />
+				<input type="text" name="network.rents[${index}].comments" data-bind="attr:{readOnly:detail.id()!=null && index<existedLength()-1},value: (detail.id()!=null && index<existedLength-1)" validate="rangelength:[0,255]" style="width:100%" />
 			</td>
-			<td><input type="button" value="删除" data-bind="click: function() { onDeleteRentResource(detail); }, clickBubble: false" /></td>
+			<td><input type="button" value="删除" data-bind="disable:detail.id()!=null && index<existedLength()-1, click: function() { onDeleteRentResource(detail); }, clickBubble: false" /></td>
 		</tr>
 		{{/each}}
 	</#noparse>

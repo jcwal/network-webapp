@@ -58,7 +58,7 @@
 										</span>
 										<span>&nbsp;|&nbsp;</span>
 										<span>
-											<a href="javascript:void(0);" target="dialog::{title: '修改密码', width:'580',height:'280'}" url="admin/hcrm/doctor/changepassword">修改密码</a>
+											<a href="javascript:void(0);" target="dialog::{title: '修改密码', width:'580',height:'280'}" url="admin/network/doctor/changepassword">修改密码</a>
 										</span>
 										<span>&nbsp;|&nbsp;</span>
 										<span>
