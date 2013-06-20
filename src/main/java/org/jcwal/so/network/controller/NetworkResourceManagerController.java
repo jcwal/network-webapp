@@ -4,10 +4,13 @@ import javax.validation.Valid;
 
 import org.jcwal.so.network.domain.NetworkResource;
 import org.jcwal.so.network.repository.NetworkResourceRepository;
+import org.jcwal.so.network.service.NetworkResourceService;
+import org.jcwal.so.network.service.impl.NetworkSchemaRegistory;
 import org.macula.base.security.util.SecurityUtils;
 import org.macula.core.exception.FormBindException;
 import org.macula.core.mvc.annotation.FormBean;
 import org.macula.core.mvc.annotation.OpenApi;
+import org.macula.plugins.mda.finder.view.FinderView;
 import org.macula.plugins.mda.finder.vo.FinderSelection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,27 +27,27 @@ public class NetworkResourceManagerController extends AdminNetworkController {
 	@Autowired
 	private NetworkResourceRepository networkResourceRepository;
 
+	@Autowired
+	private NetworkResourceService networkResourceService;
+
 	@RequestMapping(value = "/networkresource/list", method = RequestMethod.GET)
 	public View index() {
-		// return new FinderView(HospitalSchemaRegistory.DOCTOR_SCHEMA);
-		return null;
+		return new FinderView(NetworkSchemaRegistory.NETWORKRESOURCE_SCHEMA);
 	}
 
-	@RequestMapping(value = "/networkresource/segment", method = RequestMethod.GET)
-	public String create(Model model) {
+	@RequestMapping(value = "/networkresource/segment", method = { RequestMethod.GET, RequestMethod.POST })
+	public String createBatch(Model model) {
 		return super.getRelativePath("/networkresource/segment");
 	}
 
-	@RequestMapping(value = "/network/savesagement", method = RequestMethod.POST)
+	@RequestMapping(value = "/networkresource/savesegment", method = RequestMethod.POST)
 	@OpenApi
-	public Long save(@RequestParam(value = "segment", required = true) String sagement,
+	public int save(@RequestParam(value = "segment", required = true) String segment,
 			@RequestParam(value = "type", required = true) String type) {
-
 		if (hasErrors()) {
 			throw new FormBindException(getMergedBindingResults());
 		}
-
-		return 0L;
+		return networkResourceService.createResourceBySegment(segment, type).size();
 	}
 
 	@RequestMapping(value = "/networkresource/delete", method = RequestMethod.POST)
@@ -58,26 +61,32 @@ public class NetworkResourceManagerController extends AdminNetworkController {
 		return true;
 	}
 
-	@RequestMapping(value = "/network/edit", method = RequestMethod.POST)
+	@RequestMapping(value = "/networkresource/create", method = RequestMethod.POST)
+	public String create(Model model) {
+		return super.getRelativePath("/networkresource/edit");
+	}
+
+	@RequestMapping(value = "/networkresource/edit", method = RequestMethod.POST)
 	public String edit(@FormBean("selection") FinderSelection selection, Model model) {
 		String networkId = selection.getItems().get(0);
 		model.addAttribute("networkId", networkId);
-		return super.getRelativePath("/network/edit");
+		return super.getRelativePath("/networkresource/edit");
 	}
 
-	@RequestMapping(value = "/network/save", method = RequestMethod.POST)
+	@RequestMapping(value = "/networkresource/save", method = RequestMethod.POST)
 	@OpenApi
 	public Long save(@FormBean("network") @Valid NetworkResource network) {
 		if (hasErrors()) {
 			throw new FormBindException(getMergedBindingResults());
 		}
-		networkResourceRepository.save(network);
+		networkResourceRepository.save(network.updateRents());
 		return network.getId();
 	}
 
-	@RequestMapping(value = "/network/get/{networkId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/networkresource/get/{networkId}", method = RequestMethod.GET)
 	@OpenApi
-	public NetworkResource getUserInfo(@PathVariable("networkId") Long networkId) {
+	public NetworkResource getNetworkResource(@PathVariable("networkId") Long networkId) {
 		return networkResourceRepository.findOne(networkId);
 	}
+
 }

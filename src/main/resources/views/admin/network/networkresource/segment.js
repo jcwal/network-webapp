@@ -2,20 +2,23 @@ $(function() {
 	var code = 'create-segment';
 
 	var $content = $('#page-' + code);
+	ko.applyBindings(ko.mapping.fromJS({
+		type : 'A'
+	}), $content[0]);
+
 	var $form = $content.find('form:first');
 	$.metadata.setType('attr', 'validate');
-	
 	$.validator.addMethod("regex", function(value, element, regexp) {
-		return this.optional(element) || regexp.exec(value);
-	}, "请按照IP段规则输入。");
-	
+		return this.optional(element) || regexp.test(value);
+	}, "请按照IP段规则(x.x.x)输入。");
 	var validator = $form.validate({
 		submitHandler : function(form) {
 			$(form).ajaxSubmit(
 					{
 						success : function(data) {
 							if (data.success) {
-								MessageBox.info('保存成功!', true);
+								MessageBox.info('成功生成' + data.returnObject
+										+ '个IP资源!', true);
 								$(form).trigger('closeDialog');
 							} else {
 								var errors = {};

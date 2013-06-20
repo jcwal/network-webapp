@@ -9,14 +9,13 @@
 						<tr>
 							<th><label>IP段(x.x.x)：</label></th>
 							<td colspan="3">
-								<input type="text" name=segmentt" maxlength="11" validate="required:true,rangelength:[5,11],regex: /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){2}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/" style="width: 180px;" />
-								
+								<input type="text" name="segment" maxlength="11" validate="{required:true,rangelength:[5,11],regex:/^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){2}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/}" style="width: 180px;" />								
 							</td>							
 						</tr>
 						<tr>
 							<th><label>IP类型：</label></th>
 							<td colspan="3">
-								<input name="type" validate="required:true" style="width: 180px;" />
+								<select name="type" data-bind="options: $Param('network_type_list','${base}'), optionsText: 'label', optionsValue:'code', value: type" style="width: 185px;" validate="required:true"/>
 							</td>
 						</tr>							
 					</tbody>
