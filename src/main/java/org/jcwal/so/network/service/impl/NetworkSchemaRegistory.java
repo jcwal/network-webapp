@@ -216,7 +216,7 @@ public class NetworkSchemaRegistory {
 		param.setEnableSearch(true);
 		param.setEnableFilter(true);
 		param.setDefaultCriteriaType(CriteriaType.Equals);
-		param.setFieldControl(FieldControl.Text);
+		param.setFieldControl(FieldControl.Combox);
 		schema.addParam(param);
 
 		column = new FinderColumn();
@@ -232,7 +232,7 @@ public class NetworkSchemaRegistory {
 		param.setEnableSearch(true);
 		param.setEnableFilter(true);
 		param.setDefaultCriteriaType(CriteriaType.Equals);
-		param.setFieldControl(FieldControl.Text);
+		param.setFieldControl(FieldControl.Combox);
 		schema.addParam(param);
 
 		column = new FinderColumn();
@@ -248,7 +248,7 @@ public class NetworkSchemaRegistory {
 		param.setEnableSearch(true);
 		param.setEnableFilter(true);
 		param.setDefaultCriteriaType(CriteriaType.Equals);
-		param.setFieldControl(FieldControl.Text);
+		param.setFieldControl(FieldControl.Combox);
 		schema.addParam(param);
 
 		column = new FinderColumn();
