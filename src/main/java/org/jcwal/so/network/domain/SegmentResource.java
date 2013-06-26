@@ -1,11 +1,20 @@
 package org.jcwal.so.network.domain;
 
+import java.util.Date;
+
+import javax.persistence.Entity;
+
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import org.macula.core.domain.AbstractAuditable;
 
-public class InsideSegment extends AbstractAuditable<Long> {
+@Entity
+@DynamicInsert
+@DynamicUpdate
+public class SegmentResource extends AbstractAuditable<Long> {
 
 	private static final long serialVersionUID = 1L;
-	//序号	区域	IP地址段（/24）	用  途	获取方式	VLAN 号	VLAN 名	起始IP	终止IP	IP地址数	子网掩码	网关	网关设备	保 留 IP	保留IP数	启用日期	取消日期	备注		
+	private String type;
 	private String tarea;
 	private String tsegment;
 	private String tusage;
@@ -21,8 +30,21 @@ public class InsideSegment extends AbstractAuditable<Long> {
 	private String tgatewayType;
 	private String tkeepIps;
 	private String tkeepIpSize;
-	private String tvalidateDate;
-	private String tinvalidateDate;
+	private Date tvalidateDate;
+	private Date tinvalidateDate;
+
+	private String tline;
+	private String telec;
+	private String tport;
+	//	private String tipSize;
+	//	private String tstartIp;
+	//	private String tendIp;
+	//	private String tmask;
+	//	private String tgateway;
+	private String tmainDns;
+	private String tsecondDns;
+	//	private String comments;
+
 	private String comments;
 
 	public String getTarea() {
@@ -137,27 +159,75 @@ public class InsideSegment extends AbstractAuditable<Long> {
 		this.tkeepIpSize = tkeepIpSize;
 	}
 
-	public String getTvalidateDate() {
-		return tvalidateDate;
-	}
-
-	public void setTvalidateDate(String tvalidateDate) {
-		this.tvalidateDate = tvalidateDate;
-	}
-
-	public String getTinvalidateDate() {
-		return tinvalidateDate;
-	}
-
-	public void setTinvalidateDate(String tinvalidateDate) {
-		this.tinvalidateDate = tinvalidateDate;
-	}
-
 	public String getComments() {
 		return comments;
 	}
 
 	public void setComments(String comments) {
 		this.comments = comments;
+	}
+
+	public String getTline() {
+		return tline;
+	}
+
+	public void setTline(String tline) {
+		this.tline = tline;
+	}
+
+	public String getTelec() {
+		return telec;
+	}
+
+	public void setTelec(String telec) {
+		this.telec = telec;
+	}
+
+	public String getTport() {
+		return tport;
+	}
+
+	public void setTport(String tport) {
+		this.tport = tport;
+	}
+
+	public String getTmainDns() {
+		return tmainDns;
+	}
+
+	public void setTmainDns(String tmainDns) {
+		this.tmainDns = tmainDns;
+	}
+
+	public String getTsecondDns() {
+		return tsecondDns;
+	}
+
+	public void setTsecondDns(String tsecondDns) {
+		this.tsecondDns = tsecondDns;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public Date getTvalidateDate() {
+		return tvalidateDate;
+	}
+
+	public void setTvalidateDate(Date tvalidateDate) {
+		this.tvalidateDate = tvalidateDate;
+	}
+
+	public Date getTinvalidateDate() {
+		return tinvalidateDate;
+	}
+
+	public void setTinvalidateDate(Date tinvalidateDate) {
+		this.tinvalidateDate = tinvalidateDate;
 	}
 }

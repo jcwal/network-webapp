@@ -13,4 +13,5 @@ public interface NetworkResourceRepository extends MaculaJpaRepository<NetworkRe
 
 	@Query("from NetworkResource t where t.id in :ids")
 	List<NetworkResource> findIds(@Param("ids") List<Long> ids);
+
 }

@@ -8,5 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 public interface NetworkResourceService {
 
 	@Transactional
-	List<NetworkResource> createResourceBySegment(String segment, String type);
+	List<NetworkResource> createResourceBySegment(Long segmentId, String size);
+
 }

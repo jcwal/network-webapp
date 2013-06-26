@@ -6,7 +6,9 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.jcwal.so.network.domain.NetworkResource;
+import org.jcwal.so.network.domain.SegmentResource;
 import org.jcwal.so.network.repository.NetworkResourceRepository;
+import org.jcwal.so.network.repository.SegmentResourceRepository;
 import org.jcwal.so.network.service.NetworkResourceService;
 import org.jcwal.so.network.service.impl.NetworkSchemaRegistory;
 import org.macula.base.security.util.SecurityUtils;
@@ -31,28 +33,14 @@ public class NetworkResourceManagerController extends AdminNetworkController {
 
 	@Autowired
 	private NetworkResourceRepository networkResourceRepository;
-
+	@Autowired
+	private SegmentResourceRepository segmentResourceRepository;
 	@Autowired
 	private NetworkResourceService networkResourceService;
 
 	@RequestMapping(value = "/networkresource/list", method = RequestMethod.GET)
 	public View index() {
 		return new FinderView(NetworkSchemaRegistory.NETWORKRESOURCE_SCHEMA);
-	}
-
-	@RequestMapping(value = "/networkresource/segment", method = { RequestMethod.GET, RequestMethod.POST })
-	public String createBatch(Model model) {
-		return super.getRelativePath("/networkresource/segment");
-	}
-
-	@RequestMapping(value = "/networkresource/savesegment", method = RequestMethod.POST)
-	@OpenApi
-	public int save(@RequestParam(value = "segment", required = true) String segment,
-			@RequestParam(value = "type", required = true) String type) {
-		if (hasErrors()) {
-			throw new FormBindException(getMergedBindingResults());
-		}
-		return networkResourceService.createResourceBySegment(segment, type).size();
 	}
 
 	@RequestMapping(value = "/networkresource/delete", method = RequestMethod.POST)
@@ -112,6 +100,21 @@ public class NetworkResourceManagerController extends AdminNetworkController {
 	@OpenApi
 	public NetworkResource getNetworkResource(@PathVariable("networkId") Long networkId) {
 		return networkResourceRepository.findOne(networkId);
+	}
+
+	@RequestMapping(value = "/networkresource/detail", method = RequestMethod.GET)
+	public String viewDetail(Model model, @RequestParam("item") Long id) {
+		NetworkResource network = networkResourceRepository.findOne(id);
+		model.addAttribute("network", network);
+		return super.getRelativePath("/networkresource/detail");
+	}
+
+	@RequestMapping(value = "/networkresource/segdetail", method = RequestMethod.GET)
+	public String viewSegdetail(Model model, @RequestParam("item") Long id) {
+		NetworkResource network = networkResourceRepository.findOne(id);
+		List<SegmentResource> segments = segmentResourceRepository.findIpBelongs(network.getIp());
+		model.addAttribute("segments", segments);
+		return super.getRelativePath("/networkresource/segdetail");
 	}
 
 }

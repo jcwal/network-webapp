@@ -1,15 +1,16 @@
-<@layout.ajaxContent title="创建IP段 -[$Revision: 3569 $]" scripts="admin/network/networkresource/segment.js">
+<@layout.ajaxContent title="创建IP段 -[$Revision: 3569 $]" scripts="admin/network/segmentresource/segment.js">
 	<#assign code="create-segment" />
 	<@layout.content_main>	
 	<div id="page-${code}" class="tableform">
-		<form id="form-${code}" action="${base}/admin/network/networkresource/savesegment" method="post">
+		<form id="form-${code}" action="${base}/admin/network/segmentresource/batchsegment" method="post">
+			<input type="hidden" name="segmentId" value="${segment.id}" />
 			<div class="division">
 				<table cellspacing="0" cellpadding="0" border="0">
 					<tbody>
 						<tr>
 							<th><label>IP段(x.x.x)：</label></th>
 							<td colspan="3">
-								<input type="text" name="segment" maxlength="11" validate="{required:true,rangelength:[5,11],regex:/^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){2}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/}" style="width: 180px;" />								
+								${segment.tsegment}																
 							</td>							
 						</tr>
 						<tr>
