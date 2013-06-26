@@ -39,7 +39,7 @@
 					</td>							
 				</tr>
 				<tr data-bind="visible: type()=='A'">
-					<th><label>获取方式</label></th>
+					<th><label>获取方式：</label></th>
 					<td colspan="3">
 						${(segment.taccess)?default("&nbsp;")}
 					</td>							

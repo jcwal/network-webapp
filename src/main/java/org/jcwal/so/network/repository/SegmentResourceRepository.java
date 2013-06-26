@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 
 public interface SegmentResourceRepository extends MaculaJpaRepository<SegmentResource, Long> {
 
-	@Query("from SegmentResource t where t.tstartIp like :segment")
+	@Query("from SegmentResource t where t.tstartIp like :segment or t.tsegment like :segment or t.tendIp like :segment")
 	List<SegmentResource> findIpBelongs(@Param("segment") String segment);
 
 	@Query("from SegmentResource t where t.id in :ids")

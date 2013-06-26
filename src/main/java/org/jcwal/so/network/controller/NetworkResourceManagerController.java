@@ -112,7 +112,9 @@ public class NetworkResourceManagerController extends AdminNetworkController {
 	@RequestMapping(value = "/networkresource/segdetail", method = RequestMethod.GET)
 	public String viewSegdetail(Model model, @RequestParam("item") Long id) {
 		NetworkResource network = networkResourceRepository.findOne(id);
-		List<SegmentResource> segments = segmentResourceRepository.findIpBelongs(network.getIp());
+		String ip = network.getIp();
+		ip = ip.substring(0, ip.lastIndexOf('.') + 1);
+		List<SegmentResource> segments = segmentResourceRepository.findIpBelongs(ip + '%');
 		model.addAttribute("segments", segments);
 		return super.getRelativePath("/networkresource/segdetail");
 	}
