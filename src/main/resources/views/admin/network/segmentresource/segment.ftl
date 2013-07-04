@@ -7,11 +7,23 @@
 			<div class="division">
 				<table cellspacing="0" cellpadding="0" border="0">
 					<tbody>
+						<#if segment.type == 'A'>
 						<tr>
 							<th><label>IP段(x.x.x)：</label></th>
 							<td colspan="3">
 								${segment.tsegment}																
 							</td>							
+						</tr>
+						</#if>
+						<tr>
+							<th><label>起始IP：</label></th>
+							<td>
+								${segment.tstartIp}
+							</td>
+							<th><label>终止IP：</label></th>
+							<td>
+								${segment.tendIp}								
+							</td>
 						</tr>
 						<tr>
 							<th><label>IP类型：</label></th>
