@@ -55,7 +55,7 @@
 								<input type="text" name="segment.tvlanName" maxlength="255" data-bind="value: tvlanName" validate="rangelength:[0,255]" style="width: 180px;" />								
 							</td>
 						</tr>
-						<tr data-bind="visible: type()=='A'">
+						<tr>
 							<th><label>起始IP：</label></th>
 							<td>
 								<input type="text" name="segment.tstartIp" maxlength="255" data-bind="value: tstartIp" validate="{required:true,rangelength:[7,115],regex:/^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/}" style="width: 180px;" />
