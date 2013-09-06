@@ -73,11 +73,16 @@
 			<artifactId>macula-plugins-webapp</artifactId>
 			<type>war</type>
 			<version>${macula.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.macula.plugins</groupId>
-			<artifactId>macula-plugins-monitor</artifactId>
-			<version>${macula.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.macula.plugins</groupId>
+					<artifactId>macula-plugins-monitor</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.macula.plugins</groupId>
+					<artifactId>macula-plugins-event</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<!-- liquibase -->
 		<dependency>

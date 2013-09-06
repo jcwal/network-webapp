@@ -1034,7 +1034,7 @@ public class NetworkSchemaRegistory {
 		tabView.setFilter(" type = 'D' ");
 		tabView.setOrder(3);
 		tabView.addColumns(schema,
-				"id,IP,TYPE,tusable,tdomain,tf5Ip,toutsideIp,tserverIp,tusage,tapplication,tline,troom");
+				"id,IP,TYPE,tusable,tdomain,tf5Ip,toutsidePort,tserverIp,tusage,tapplication,tline,troom");
 		schema.addTabView(tabView);
 
 		tabView = new FinderTabView();

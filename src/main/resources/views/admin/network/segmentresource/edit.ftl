@@ -42,7 +42,7 @@
 						<tr data-bind="visible: type()=='A'">
 							<th><label>获取方式</label></th>
 							<td colspan="3">
-								<input type="text" name="segment.taccess" maxlength="255" data-bind="value: taccess" validate="rangelength:[0,255]" style="width: 180px;" />
+								<select name="segment.taccess" data-bind="options: ['静态','DHCP'], value: taccess" style="width: 185px;"/>								
 							</td>							
 						</tr>
 						<tr data-bind="visible: type()=='A'">
@@ -98,11 +98,11 @@
 						<tr data-bind="visible: type()=='A'">
 							<th><label>启用日期：</label></th>
 							<td>
-								<input type="text" id="tvalidateDate" name="segment.tvalidateDate" data-bind="value: tvalidateDate, type: 'date' " autocomplete="off" class="Wdate" onFocus="WdatePicker({dateFmt:'${datePattern}', maxDate:'#F{$dp.$D(\'tinvalidateDate',{m:-1})}' })" style="width:180px" />
+								<input type="text" id="tvalidateDate" name="segment.tvalidateDate" data-bind="value: tvalidateDate, type: 'date' " autocomplete="off" class="Wdate" onFocus="WdatePicker({dateFmt:'${datePattern}', maxDate:'#F{$dp.$D(\'tinvalidateDate\',{m:-1})}' })" style="width:180px" />
 							</td>
 							<th><label>取消日期：</label></th>
 							<td>
-								<input type="text" id="tinvalidateDate" name="segment.tinvalidateDate" data-bind="value: tinvalidateDate, type: 'date' " autocomplete="off" class="Wdate" onFocus="WdatePicker({dateFmt:'${datePattern}', minDate:'#F{$dp.$D(\'tvalidateDate',{m:1})}' })" style="width:180px" />								
+								<input type="text" id="tinvalidateDate" name="segment.tinvalidateDate" data-bind="value: tinvalidateDate, type: 'date' " autocomplete="off" class="Wdate" onFocus="WdatePicker({dateFmt:'${datePattern}', minDate:'#F{$dp.$D(\'tvalidateDate\',{m:1})}' })" style="width:180px" />								
 							</td>
 						</tr>						
 						<tr data-bind="visible: type()=='B'">
